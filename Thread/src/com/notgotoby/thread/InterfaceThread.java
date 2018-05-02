@@ -1,6 +1,6 @@
 package com.notgotoby.thread;
 
-public class MyThread implements Runnable{
+public class InterfaceThread implements Runnable{
 
 	@Override
 	public void run() {
