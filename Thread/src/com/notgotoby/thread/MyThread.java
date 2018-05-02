@@ -1,9 +1,11 @@
 package com.notgotoby.thread;
 
-public class MyThread {
+public class MyThread implements Runnable{
 
-	public static void main(String[] args) {
-		System.out.println("this is my thread");
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		System.out.println(Thread.currentThread().getName());
 	}
 	
 }
