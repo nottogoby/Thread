@@ -2,8 +2,8 @@ package com.notgotoby.junit;
 
 import org.junit.Test;
 
-import com.notgotoby.thread.ExtendsThread;
-import com.notgotoby.thread.InterfaceThread;
+import com.notgotoby.thread.create.ExtendsThread;
+import com.notgotoby.thread.create.InterfaceThread;
 
 public class JunitTest {
 	
