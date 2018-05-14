@@ -1,7 +1,6 @@
 package com.notgotoby.thread.shutdown.returnShutdown;
 
 /**
- * 使用interrupt()结合return停止线程
  * @author notogoby
  *
  */
