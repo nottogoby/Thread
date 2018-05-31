@@ -1,0 +1,35 @@
+Time线程定时器（新建线程继承TimerTask）
+	1.timer.schedule(TimeTask task, Date time)：在指定的日期执行一次任务
+		执行任务的时候晚于当前时间：以设定的时间执行任务。
+			如果新启动的线程不是守护线程，那么此线程一直处于运行状态。且任务正常运行。
+			如果新启动的线程是守护线程Timer timer = new Timer(true)，那么TimerTask中的任务不会运行，因为进程已经结束了
+		执行任务的时间早于当前时间：执行此方法后，任务直接开始执行。
+		一个Timer中可以运行多个TimerTask任务，TimerTask是以队列的方式一个一个顺序执行的，所以执行的时间可能和预期的时间
+	不一致，因为可能前面的任务耗时较长，相应的后面的任务也会被延时。
+	
+	2.timer.schedule(TimerTask task, Date firstTime, long period):在指定的日期会后，按照给定的间隔周期性的无限循环执行任务
+		执行任务的时间晚于当前时间：以设定的时间执行任务。
+		执行任务的时间早于当前时间：执行此方法后，任务直接开始执行。
+		任务执行时间被延迟，比如Thread.sleep();sleep时间大于指定的间隔时间，那么以间隔时间为准。
+	3.cancel()和timer.cancel();
+		cancel()：线程调用，作用是将自身从当前任务队列移除，其余任务不受影响。
+		timer.cancel()：移除任务队列中的所有任务。
+			执行timer.cancel()之后并不一定会立即停止任务，而是正常执行，因为执行方法的时候有可能没有抢占到任务队列的锁。
+	4.timer.schedule(TimerTask task, long delay):以当前时间为参考时间，在此时间基础上延时指定的毫秒以后执行任务。
+	5.timer.schedule(TimerTask task, long delay, long period):以当前时间为参考时间，延迟指定的毫秒后按照给定的间隔周期性
+的执行任务。
+	6.schedule和scheduleAtFixedRate的区别
+		相同点：两个方法都是按照顺序执行，所以不用考虑非线程安全的情况
+			       如果线程任务存在延时的情况，那么下一次任务的执行时间是参考上次任务结束时间来确定的
+		不同点：任务不存在延时的情况，schedule是以上次任务开始时间来作为参考的，而scheduleAtFixedRate是以上次任务的结束
+			时间作为参考。
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
